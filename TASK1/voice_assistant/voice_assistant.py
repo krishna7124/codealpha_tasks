@@ -18,11 +18,11 @@ try:
     def greet():
         hour = datetime.datetime.now().hour
         if 0 <= hour < 12:
-            speak(f"Good Morning, Krishna!")
+            speak(f"Good Morning!")
         elif 12 <= hour < 18:
-            speak(f"Good Afternoon, Krishna!")
+            speak(f"Good Afternoon!")
         else:
-            speak(f"Good Evening, Krishna!")
+            speak(f"Good Evening!")
         speak("Welcome, I am your personal assistant, Viraj.")
 
     def VoiceCommand():
