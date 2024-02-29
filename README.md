@@ -16,4 +16,4 @@ Viraj is a Python-based personal assistant that can perform various tasks like o
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your_username/viraj-personal-assistant.git
+   git clone https://github.com/viraj-personal-assistant.git
