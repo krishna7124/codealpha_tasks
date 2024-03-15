@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Budget Pilot</title>
+
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+        
+        /* Define CSS variables for colors */
+        :root {
+            --greenSeaweed: rgba(2, 128, 144, 1);
+            --blueQueen: rgba(69, 105, 144, 1);
+            --redFire: rgba(244, 91, 105, 1);
+        }
+        
+        /* Global styles */
+        body {
+            background-color: var(--redFire);
+            font-family: 'Asap', sans-serif;
+            margin: 20px;
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            position: relative;
+        }
+
+        /* Branding */
+        .branding {
+            text-align: center;
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .branding img {
+            width: 110px; /* Adjust the size of the logo */
+            margin-right: 10px; /* Adjust the spacing between logo and text */
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: var(--redFire);
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        /* Login form styles */
+        .login {
+            overflow: hidden;
+            background-color: white;
+            padding: 10px 30px 20px 30px;
+            border-radius: 10px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 5px 10px 10px rgba(var(--greenSeaweed), 0.2);
+        }
+        
+        .login::before, .login::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            border-top-left-radius: 40%;
+            border-top-right-radius: 45%;
+            border-bottom-left-radius: 35%;
+            border-bottom-right-radius: 40%;
+        }
+        
+        .login::before {
+            left: 40%;
+            bottom: -130%;
+            background-color: rgba(var(--blueQueen), 0.15);
+            animation: wawes 6s infinite linear;
+        }
+        
+        .login::after {
+            left: 35%;
+            bottom: -125%;
+            background-color: rgba(var(--greenSeaweed), 0.2);
+            animation: wawes 7s infinite;
+        }
+        
+        .login input {
+            font-family: 'Asap', sans-serif;
+            display: block;
+            border-radius: 5px;
+            font-size: 16px;
+            background: white;
+            width: calc(100% - 20px); /* Adjusted width to consider padding */
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .login button {
+            font-family: 'Asap', sans-serif;
+            cursor: pointer;
+            color: var(--redFire);
+            font-size: 16px;
+            text-transform: uppercase;
+            border: 0;
+            padding: 10px;
+            margin-top: 0px;
+            border-radius: 5px;
+            border: 2px solid var(--redFire);
+            background-color: #fff;
+            transition: background-color 300ms, color 300ms, border-color 300ms;
+        }
+        
+        .login button:hover {
+            color: #fff;
+            background-color: var(--redFire);
+        } 
+        
+        /* Registration link styles */
+        .register-link {
+            color: var(--blueQueen); /* Changed link color to blue */
+            text-decoration: none;
+        }
+        
+        .register-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animation */
+        @keyframes wawes {
+            from { transform: rotate(0); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error message styles */
+        .error-message {
+            background-color: rgba(255, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 10px; /* Adjusted margin top */
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-40%);
+            color: #fff;
+            text-align:center;
+            font-size: 14px;
+        }
+    </style>    
+    
+</head>
+<body>
+
+<div class="branding">
+    <img src="/static/logo.png" alt="Logo"> <!-- Replace "logo-placeholder.png" with your actual logo -->
+    Budget Pilot
+</div>
+
+<div class="login">
+    <!-- Error message container above login text -->
+    <div class="error-message-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <h4 class="card-title">Login</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Login</button>
+    </form>
+    <p style="text-align: center; margin-top: 20px;">Don't have an account? <a class="register-link" href="{% url 'register' %}" >Create one</a></p>
+</div>
+
+<footer>
+
+    © 2024 Budget Pilot. All rights reserved.
+
+</footer>
+
+</body>
+</html>
