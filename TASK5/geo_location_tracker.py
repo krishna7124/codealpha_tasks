@@ -16,7 +16,7 @@ def get_public_ip():
 
 def get_geolocation(ip_address):
     # Replace 'your_api_key' with your actual API key from IPGeolocation
-    api_key = '649b40303e344d088d99d72481de8ae7'
+    api_key = 'your_api_key'
     url = f'https://api.ipgeolocation.io/ipgeo?apiKey={api_key}&ip={ip_address}'
     response = requests.get(url)
     data = response.json()
